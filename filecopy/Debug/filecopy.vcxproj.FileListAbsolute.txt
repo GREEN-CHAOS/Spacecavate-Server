@@ -1,0 +1,2 @@
+C:\Users\test\Documents\GitHub\Spacecavate\Spacecavate-Server\filecopy\Debug\filecopy.exe
+C:\Users\test\Documents\GitHub\Spacecavate\Spacecavate-Server\filecopy\Debug\filecopy.pdb
