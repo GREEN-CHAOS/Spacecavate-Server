@@ -1,0 +1,219 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://default_env.tres" type="Environment" id=1]
+[ext_resource path="res://visuals/material01.bmp" type="Texture2D" id=2]
+[ext_resource path="res://visuals/Normal.jpg" type="Texture2D" id=3]
+[ext_resource path="res://visuals/Prograde.png" type="Texture2D" id=4]
+[ext_resource path="res://visuals/Retrograde.png" type="Texture2D" id=5]
+[ext_resource path="res://scripts/Navball.gd" type="Script" id=6]
+
+[sub_resource type="SphereMesh" id=1]
+
+[sub_resource type="StandardMaterial3D" id=2]
+albedo_texture = ExtResource( 2 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 3 )
+
+[node name="Navball" type="Control"]
+anchor_left = 0.350195
+anchor_top = 0.598333
+anchor_right = 0.649805
+anchor_bottom = 1.0
+margin_left = 0.399994
+margin_right = 0.599976
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="."]
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 1.0
+rect_min_size = Vector2( 205, 150 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+script = null
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="SubViewport" parent="ViewportContainer"]
+handle_input_locally = false
+size = Vector2i( 205, 192 )
+render_target_update_mode = 4
+script = null
+
+[node name="Spatial" type="Node3D" parent="ViewportContainer/Viewport"]
+script = null
+
+[node name="Camera" type="Camera3D" parent="ViewportContainer/Viewport/Spatial"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -2.07017, 0, 0 )
+environment = ExtResource( 1 )
+projection = 1
+current = true
+fov = 134.3
+size = 2.22502
+script = null
+
+[node name="OmniLight" type="SpotLight3D" parent="ViewportContainer/Viewport/Spatial/Camera"]
+light_indirect_energy = 16.0
+script = null
+
+[node name="MeshInstance" type="MeshInstance3D" parent="ViewportContainer/Viewport/Spatial"]
+mesh = SubResource( 1 )
+skeleton = NodePath("")
+material/0 = SubResource( 2 )
+script = null
+
+[node name="SpotLight" type="SpotLight3D" parent="ViewportContainer/Viewport/Spatial"]
+transform = Transform( 1, 0, 0, 0, 0.862399, -0.50623, 0, 0.50623, 0.862399, 0, -1.59306, 2.52253 )
+script = null
+
+[node name="VBoxContainerleft" type="VBoxContainer" parent="."]
+anchor_left = 0.0944623
+anchor_top = 0.585062
+anchor_right = 0.260586
+anchor_bottom = 0.999999
+margin_bottom = -20.0
+alignment = 1
+script = null
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Retrograde" type="TextureButton" parent="VBoxContainerleft"]
+margin_right = 51.0
+margin_bottom = 38.0
+texture_normal = ExtResource( 5 )
+stretch_mode = 4
+script = null
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Prograde" type="TextureButton" parent="VBoxContainerleft"]
+margin_top = 42.0
+margin_right = 51.0
+margin_bottom = 80.0
+texture_normal = ExtResource( 4 )
+stretch_mode = 5
+script = null
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainertop" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+alignment = 1
+script = null
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="t-Maneuver" type="HBoxContainer" parent="VBoxContainertop"]
+margin_right = 307.0
+margin_bottom = 18.0
+alignment = 1
+script = null
+
+[node name="t-Maneuver" type="Label" parent="VBoxContainertop/t-Maneuver"]
+margin_left = 101.0
+margin_right = 179.0
+margin_bottom = 18.0
+text = "t-Maneuver"
+valign = 1
+script = null
+
+[node name="time" type="Label" parent="VBoxContainertop/t-Maneuver"]
+margin_left = 183.0
+margin_right = 206.0
+margin_bottom = 18.0
+text = "12s"
+align = 2
+script = null
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="deltavlefttoburn" type="HBoxContainer" parent="VBoxContainertop"]
+margin_top = 22.0
+margin_right = 307.0
+margin_bottom = 40.0
+alignment = 1
+script = null
+
+[node name="deltavleft" type="Label" parent="VBoxContainertop/deltavlefttoburn"]
+margin_left = 99.0
+margin_right = 162.0
+margin_bottom = 18.0
+text = "delatvleft"
+script = null
+
+[node name="deltav" type="Label" parent="VBoxContainertop/deltavlefttoburn"]
+margin_left = 166.0
+margin_right = 207.0
+margin_bottom = 18.0
+text = "12m/s"
+align = 2
+script = null
+
+[node name="timetilburn" type="HBoxContainer" parent="VBoxContainertop"]
+margin_top = 44.0
+margin_right = 307.0
+margin_bottom = 62.0
+alignment = 1
+script = null
+
+[node name="deltatManeuver" type="Label" parent="VBoxContainertop/timetilburn"]
+margin_left = 90.0
+margin_right = 197.0
+margin_bottom = 18.0
+text = "deltatManeuver"
+script = null
+
+[node name="time" type="Label" parent="VBoxContainertop/timetilburn"]
+margin_left = 201.0
+margin_right = 216.0
+margin_bottom = 18.0
+text = "5s"
+align = 2
+script = null
+
+[node name="HBoxContainerright" type="VBoxContainer" parent="."]
+anchor_left = 0.9
+anchor_right = 0.9
+anchor_bottom = 1.0
+margin_bottom = -20.0
+alignment = 2
+script = null
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSlider" type="VSlider" parent="HBoxContainerright"]
+margin_right = 61.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 61, 200 )
+rounded = true
+script = null
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Percent" type="Label" parent="HBoxContainerright"]
+margin_top = 204.0
+margin_right = 61.0
+margin_bottom = 222.0
+rect_min_size = Vector2( 61, 0 )
+text = "0%"
+align = 1
+valign = 1
+script = null
+
+[connection signal="value_changed" from="HBoxContainerright/VSlider" to="." method="Throttlevaluechanged"]
