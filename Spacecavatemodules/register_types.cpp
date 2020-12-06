@@ -2,11 +2,10 @@
 #include "core/object/class_db.h"
 #include "OrbitCalculator.h"
 
-void register_OrbitCalculator_types(){
+void register_Spacecavatemodules_types(){
     ClassDB::register_class<OrbitCalculator>();
-    //Variant::register_types<>
     }
-void unregister_OrbitCalculator_types(){
+void unregister_Spacecavatemodules_types(){
 
 
 }
