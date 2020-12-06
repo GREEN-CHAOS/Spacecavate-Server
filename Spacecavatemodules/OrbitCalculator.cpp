@@ -90,7 +90,9 @@ void OrbitCalculator::newcollision(int worldindex, int satindex){
             print_line("hasnode");
             
     }
-    (rootnode -> get_node("world"+String::num_int64(worldindex))) -> add_child(newcollisionobject(satindex),true);
+
+      GravityObject* child = GravityObject::_new(satindex,this ->get_path());
+    (rootnode -> get_node("world"+String::num_int64(worldindex))) -> add_child(child,true);
     
 }
 
@@ -104,16 +106,6 @@ void OrbitCalculator::set_rootnode(NodePath rootnodepath){
 
 }
 
-KinematicBody3D* OrbitCalculator::newcollisionobject(int satindex){
-    
-    KinematicBody3D* body = &KinematicBody3D();
-    body -> set_translation(sattelites[satindex].pos);
-    body -> set_linear_velocity(satindex[satindex].v);
-    body -> set_mass(satindex[satindex].m);
-
-    return body;
-    
-}
 
 void OrbitCalculator::ready(){
     Collsionbody = ResourceLoader::load("res://Navball.tscn","res://Navball.tscn");
@@ -122,4 +114,10 @@ void OrbitCalculator::ready(){
 Vector3 OrbitCalculator::get_sattelite_pos(int satindex){
 
     return sattelites[satindex].pos;
+}
+
+
+Vector3 OrbitCalculator::get_sattelite_velocity(int satindex){
+
+    return sattelites[satindex].v;
 }
