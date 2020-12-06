@@ -31,7 +31,7 @@ public:
     ~OrbitCalculator();
     int addSattelite();
     void process(real_t delta);
-    void newSattelite(Vector3 posInit,Vector3 vInit, real_t mInit , bool nogravityeffectInit , Vector3 aInit);
+    void newSattelite(Vector3 posInit,Vector3 vInit, real_t mInit , bool nogravityeffectInit ,int collisionradiusInit , Vector3 aInit);
     void removeSattelite(int index);
     void newcollision(int worldindex, int satindex);
 
