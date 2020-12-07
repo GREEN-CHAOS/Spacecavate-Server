@@ -7,10 +7,7 @@ void PhysicsViewportWorld::set_originshift(Vector3 nullposcoordinates) {
 	this->nullposcoordinates = nullposcoordinates;
 }
 
-PhysicsViewportWorld *PhysicsViewportWorld::_new(Vector3 nullposcoordinates) {
-	PhysicsViewportWorld port = PhysicsViewportWorld(nullposcoordinates);
-	return &port;
-}
+
 
 PhysicsViewportWorld::PhysicsViewportWorld() {
 	this->nullposcoordinates = Vector3(0, 0, 0);

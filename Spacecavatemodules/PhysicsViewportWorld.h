@@ -16,7 +16,6 @@ public:
 	void set_originshift(Vector3 nullposcoordinates);
 	PhysicsViewportWorld();
 	PhysicsViewportWorld(Vector3 nullposcoordinates);
-	static PhysicsViewportWorld *_new(Vector3 nullposcoordinates);
 	DisplayServer::WindowID get_window_id() const;
 	String get_configuration_warning() const;
 	void _validate_property(PropertyInfo &property) const;

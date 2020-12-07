@@ -5,10 +5,11 @@ void OrbitCalculator::_bind_methods(){
     ClassDB::bind_method(D_METHOD("addSattelite","posInit", "vInit", "mInit" ,"collisionradiusInit", "nogravityeffectInit" , "aInit"),&OrbitCalculator::newSattelite);
     ClassDB::bind_method(D_METHOD("removeSattelite","sat"),&OrbitCalculator::removeSattelite);
     ClassDB::bind_method(D_METHOD("set_rootnode","rootnodepath"),&OrbitCalculator::set_rootnode);
-    ClassDB::bind_method(D_METHOD("get_rootnode",nullptr),&OrbitCalculator::get_rootnode);
+    ClassDB::bind_method(D_METHOD("get_rootnode"),&OrbitCalculator::get_rootnode);
+    ClassDB::bind_method(D_METHOD("newcollision","worldindex","satindex"),&OrbitCalculator::newcollision);
 
     //register_property<OrbitCalculator,NodePath>("physics_rootnode",&OrbitCalculator::rootnode,"");
-    ADD_PROPERTY(PropertyInfo(Variant::Type::NODE_PATH,"physics_rootnode"),"set_rootnode","get_rootnode");
+    //ADD_PROPERTY(PropertyInfo(Variant::Type::NODE_PATH,"physics_rootnode"),"set_rootnode","get_rootnode");
 }
 
 void OrbitCalculator::newSattelite(Vector3 posInit,Vector3 vInit, real_t mInit , bool nogravityeffectInit , int collisionradiusInit, Vector3 aInit){
@@ -50,7 +51,7 @@ void OrbitCalculator::_notification(int p_what){
 }
 
 void OrbitCalculator::process(real_t delta){
-    print_line("looprunning" );
+    print_line("looprunning" + String(sattelites[0].pos) + String(sattelites[1].pos) );
     for (int i = 0; i<sattelites.size();i++){
         if (sattelites[i].nogravityeffect) {
             sattelites[i].a = Vector3(0,0,0);
@@ -60,7 +61,7 @@ void OrbitCalculator::process(real_t delta){
             if (i==b) {
                 continue;
                 }
-            real_t distance = sattelites[b].pos.distance_squared_to(sattelites[i].pos)
+            real_t distance = sattelites[b].pos.distance_squared_to(sattelites[i].pos);
             if (distance <= sattelites[b].collisionradius + sattelites[i].collisionradius){
                 //put code for world assignment here still figuring this out (what if two world collide with each other)
             }
@@ -95,9 +96,11 @@ void OrbitCalculator::newcollision(int worldindex, int satindex){
             
     }
 
-      GravityObject* child = GravityObject::_new(satindex,this ->get_path());
-      child -> set_name(String::num_int64(satindex));
-    (rootnode -> get_node("world"+String::num_int64(worldindex))) -> add_child(child,true);
+      GravityObject child = GravityObject(satindex,this ->get_path());
+      child.set_name(String::num_int64(satindex));
+      child.set_translation(sattelites[satindex].pos);
+      GravityObjects.push_back(child);
+    (rootnode -> get_node("world"+String::num_int64(worldindex))) -> add_child(&GravityObjects[GravityObjects.end],true);
     
 }
 
@@ -113,7 +116,7 @@ void OrbitCalculator::set_rootnode(NodePath rootnodepath){
 
 
 void OrbitCalculator::ready(){
-    Collsionbody = ResourceLoader::load("res://Navball.tscn","res://Navball.tscn");
+    Collisionbody = ResourceLoader::load("res://Navball.tscn");
 }
 
 Vector3 OrbitCalculator::get_sattelite_pos(int satindex){

@@ -34,10 +34,10 @@ void GravityObject::physics_process(real_t delta){
    // }
 }
 
-GravityObject * GravityObject::_new(int satindex , NodePath calcpath){
+void GravityObject::init(int satindex , NodePath calcpath){
 
-    GravityObject body = GravityObject(satindex,calcpath);
-    return &body;
+    this -> calcpath = calcpath;
+    this -> satindex = satindex;
 }
 
 
@@ -51,6 +51,6 @@ GravityObject::GravityObject(){
 
 GravityObject::GravityObject(int satindex, NodePath calcpath){
 
-    this -> calcpath = NodePath("");
-    this -> satindex = NULL;
+    this -> calcpath = calcpath;
+    this -> satindex = satindex;
 }

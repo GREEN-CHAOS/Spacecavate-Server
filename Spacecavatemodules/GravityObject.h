@@ -30,6 +30,6 @@ class GravityObject : public RigidBody3D {
     void set_originshift(Vector3 nullposcoordiantes);
     GravityObject();
     GravityObject(int satindex , NodePath calcpath);
-    static GravityObject * GravityObject::_new(int satindex , NodePath calcpath);
+    void init(int satindex , NodePath calcpath);
 };
 #endif

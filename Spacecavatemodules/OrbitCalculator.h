@@ -21,11 +21,12 @@ protected:
 
 private:
     std::vector<SatAtt> sattelites ;
+    std::vector<GravityObject> GravityObjects ;
     void ready();
     
 public:
     const float G = 0.067430;
-    RES Collsionbody;
+    RES Collisionbody;
     Node* rootnode;
     OrbitCalculator();
     ~OrbitCalculator();
