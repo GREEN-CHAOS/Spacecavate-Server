@@ -1,3 +1,4 @@
+#pragma message ( "SatAtt.h start" )
 #ifndef SATTATT_H
 #define SATTATT_H
 #include "core/math/vector3.h"
@@ -22,3 +23,4 @@ class SatAtt
 
 };
 #endif
+#pragma message ( "SatAtt.h done" )

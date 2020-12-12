@@ -1,11 +1,11 @@
-
+#pragma message ( "GravityObject.h" )
 #ifndef GRAVITYOBJECT
 #define GRAVITYOBJECT
 
 #include "scene/3d/physics_body_3d.h"
 #include "scene/3d/collision_shape_3d.h"
 #include "scene/3d/mesh_instance_3d.h"
-#include "OrbitCalculator.h"
+
 
 class GravityObject : public RigidBody3D {
 
@@ -33,3 +33,4 @@ class GravityObject : public RigidBody3D {
     void init(int satindex , NodePath calcpath);
 };
 #endif
+#pragma message ( "GravityObject done" )

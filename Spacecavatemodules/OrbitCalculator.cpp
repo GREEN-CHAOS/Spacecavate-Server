@@ -1,5 +1,5 @@
+#pragma message ( "OrbitCalcualtor.cpp start" )
 #include "OrbitCalculator.h"
-
 void OrbitCalculator::_bind_methods(){
     ClassDB::bind_method(D_METHOD("process","delta"),&OrbitCalculator::process);
     ClassDB::bind_method(D_METHOD("addSattelite","posInit", "vInit", "mInit" ,"collisionradiusInit", "nogravityeffectInit" , "aInit"),&OrbitCalculator::newSattelite);
@@ -63,11 +63,11 @@ void OrbitCalculator::process(real_t delta){
                 }
             real_t distance = sattelites[b].pos.distance_squared_to(sattelites[i].pos);
             if (distance <= sattelites[b].collisionradius + sattelites[i].collisionradius){
-                //put code for world assignment here still figuring this out (what if two world collide with each other)
+                //put code for world assignment here still figuring this out (what if two worlds collide with each other)
             }
                 real_t pull = G * sattelites[b].m / distance;
                 Vector3 dir = sattelites[i].pos.direction_to(sattelites[b].pos).normalized();
-                sattelites[i].a = dir*pull;
+                sattelites[i].a += dir*pull;
                 //print_line("dir   " + String(dir)+ "bpos    " + String(sattelites[b].pos)+"ipos    "+String(sattelites[i].pos)+ "ia    " + String(sattelites[i].a) + "iv   " + String(sattelites[i].v));
                
 
@@ -99,8 +99,11 @@ void OrbitCalculator::newcollision(int worldindex, int satindex){
       GravityObject child = GravityObject(satindex,this ->get_path());
       child.set_name(String::num_int64(satindex));
       child.set_translation(sattelites[satindex].pos);
+/*
       GravityObjects.push_back(child);
-    (rootnode -> get_node("world"+String::num_int64(worldindex))) -> add_child(&GravityObjects[GravityObjects.end],true);
+    
+*/
+    (rootnode -> get_node("world"+String::num_int64(worldindex))) -> add_child(&GravityObjects[GravityObjects.size()],true);
     
 }
 
@@ -129,3 +132,4 @@ Vector3 OrbitCalculator::get_sattelite_velocity(int satindex){
 
     return sattelites[satindex].v;
 }
+#pragma message ( "OrbitCalcualtor done" )

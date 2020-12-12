@@ -1,3 +1,4 @@
+#pragma message ( "SatAtt start" )
 #include "SatAtt.h"
 
 SatAtt::SatAtt(Vector3 pos, Vector3 v, int m, int collisionradius, bool nogravityeffect, Vector3 a) {
@@ -10,3 +11,4 @@ SatAtt::SatAtt(Vector3 pos, Vector3 v, int m, int collisionradius, bool nogravit
 	this->nogravityeffect = nogravityeffect;
 }
 
+#pragma message ( "SatAtt done" )

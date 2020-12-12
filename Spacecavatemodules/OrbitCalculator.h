@@ -1,14 +1,17 @@
+#pragma message ( "OrbitCalcualtor.h start" )
+
 #ifndef ORBITCALCULATOR_H
 #define ORBITCALCULATOR_H
 #define REAL_T_IS_DOUBLE
 
+#include "GravityObject.h"
 #include "SatAtt.h"
 #include "vector"
 #include "scene/main/node.h"
 #include "core/math/vector3.h"
 #include "scene/3d/physics_body_3d.h"
 #include "scene/3d/node_3d.h"
-#include "GravityObject.h"
+
 
 class OrbitCalculator : public Node
 {
@@ -46,4 +49,4 @@ public:
 
 #endif
 
-
+#pragma message ( "OrbitCalculator.h done" )

@@ -1,3 +1,4 @@
+#pragma message ( "PhysicsWorld.cpp start" )
 #include "PhysicsViewportWorld.h"
 
 void PhysicsViewportWorld::_bind_methods() {
@@ -34,3 +35,4 @@ DisplayServer::WindowID PhysicsViewportWorld::get_window_id() const {
 bool PhysicsViewportWorld::_can_consume_input_events() const {
 	return false;
 }
+#pragma message ( "PhysicsWorld.cpp done" )

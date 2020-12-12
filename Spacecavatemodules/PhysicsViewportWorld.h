@@ -1,3 +1,4 @@
+#pragma message ( "PhysicsViewportWorld.h start" )
 #ifndef PHYSICSVIEWPORTWORLD
 #define PHYSICSVIEWPORTWORLD
 
@@ -22,3 +23,4 @@ public:
 	bool _can_consume_input_events() const;
 };
 #endif
+#pragma message ( "PhysicsViewportWorld.h done" )
