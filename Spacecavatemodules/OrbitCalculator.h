@@ -11,6 +11,7 @@
 #include "core/math/vector3.h"
 #include "scene/3d/physics_body_3d.h"
 #include "scene/3d/node_3d.h"
+#include "PhysicsViewportWorld.h"
 
 
 class OrbitCalculator : public Node
