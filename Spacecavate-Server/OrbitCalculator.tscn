@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://OrbitCalculator.gd" type="Script" id=1]
+<<<<<<< Updated upstream
 [ext_resource path="res://default_env.tres" type="Environment" id=2]
 [ext_resource path="res://MeshInstance.tscn" type="PackedScene" id=3]
+=======
+[ext_resource path="res://MeshInstance.tscn" type="PackedScene" id=2]
+>>>>>>> Stashed changes
 
-[node name="root" type="Node3D"]
-script = null
-
-[node name="OrbitCalculator" type="OrbitCalculator" parent="."]
+[node name="OrbitCalculator" type="OrbitCalculator"]
 script = ExtResource( 1 )
 
+<<<<<<< Updated upstream
 [node name="Node3D" type="Node3D" parent="OrbitCalculator"]
 script = null
 
@@ -19,16 +21,20 @@ script = null
 script = null
 
 [node name="MeshInstance" parent="OrbitCalculator/Node3D3" instance=ExtResource( 3 )]
+=======
+[node name="MeshInstance" parent="." instance=ExtResource( 2 )]
+>>>>>>> Stashed changes
 
-[node name="OmniLight3D" type="OmniLight3D" parent="OrbitCalculator"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9032, 0 )
-omni_range = 21.583
-script = null
+[node name="MeshInstance2" parent="." instance=ExtResource( 2 )]
 
 [node name="Camera3D" type="Camera3D" parent="."]
+<<<<<<< Updated upstream
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 19.9298, 21.4818 )
 environment = ExtResource( 2 )
 script = null
 
 [node name="Node" type="Node" parent="."]
+=======
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 11.2138, 2.96778 )
+>>>>>>> Stashed changes
 script = null

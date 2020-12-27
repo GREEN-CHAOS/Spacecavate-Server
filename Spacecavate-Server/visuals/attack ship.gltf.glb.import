@@ -1,6 +1,7 @@
 [remap]
 
 importer="scene"
+importer_version=1
 type="PackedScene"
 path="res://.godot/imported/attack ship.gltf.glb-4419f84e6f48e4890591d792b807d0a7.scn"
 
@@ -19,9 +20,9 @@ nodes/storage=0
 materials/location=1
 materials/storage=1
 materials/keep_on_reimport=true
-meshes/compress=true
 meshes/ensure_tangents=true
 meshes/storage=0
+meshes/generate_lods=true
 meshes/light_baking=0
 meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
